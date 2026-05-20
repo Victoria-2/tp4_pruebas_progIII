@@ -232,5 +232,14 @@
     "fechaAlta": "2026-05-20",
     "modificacion": "2026-05-20",
     "isActive": true
+  },
+  {
+    "legajo": 10027,
+    "nombre": "Alejandra",
+    "apellido": "Ratchtz",
+    "email": "alRactchz@facultad.edu.ar",
+    "fechaAlta": "2026-05-20",
+    "modificacion": "2026-05-20",
+    "isActive": true
   }
 ]

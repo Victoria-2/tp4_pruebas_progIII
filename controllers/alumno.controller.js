@@ -172,7 +172,9 @@ const deleteAlumnoByLegajo = async (req, res) => {
   } catch (error) {
     console.errorg(error)
     return res.status(500).json({
-      error: 'No se pudo eliminar el alumno'
+      error: 'No se pudo eliminar el alumno',
+      mensajeOriginalDeJavaScript: error.message,
+      stackTrace: error.stack
     })
   }
 }

@@ -4,7 +4,7 @@ const {
   getAlumnoByLegajo,
   // postAlumno,
   putAlumnoByLegajo /*,
-  deleteAlumnoByLegajo*/
+  deleteAlumnoByLegajo */
 } = require('../controllers/alumno.controller')
 
 const rutas = Router()

@@ -10,12 +10,12 @@
   },
   {
     "legajo": 10002,
-    "nombre": "Liam",
-    "apellido": "Rodríguez",
-    "email": "l.rodriguez@facultad.edu.ar",
+    "nombre": 22222,
+    "apellido": "Paine2",
+    "email": "222l.rodriguez@facultad.edu.ar",
     "fechaAlta": "2026-03-02",
-    "modificacion": "2026-03-02",
-    "isActive": true
+    "modificacion": "2026-05-20",
+    "isActive": 2222
   },
   {
     "legajo": 10003,

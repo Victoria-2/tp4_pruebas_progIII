@@ -1,15 +1,18 @@
 const { Router } = require('express')
 const {
   getAlumnoAll,
-  getAlumnoById
+  getAlumnoByLegajo,
+  // postAlumno,
+  putAlumnoByLegajo /*,
+  deleteAlumnoByLegajo*/
 } = require('../controllers/alumno.controller')
 
 const rutas = Router()
 
 rutas.get('/', getAlumnoAll)
 rutas.get('/:legajo', getAlumnoByLegajo)
-rutas.post('/', postAlumno)
+// rutas.post('/', postAlumno)
 rutas.put('/:legajo', putAlumnoByLegajo)
-rutas.put('/:legajo', deleteAlumnoByLegajo)
+// rutas.delete('/:legajo', deleteAlumnoByLegajo)
 
 module.exports = rutas

@@ -40,12 +40,9 @@ const getAlumnoByLegajo = async (req, res) => {
     })
   }
 }
-
-// const postAlumno = async (req, res) => {}
-
 const putAlumnoByLegajo = async (req, res) => {
+  const { legajo } = req.params
   try {
-    const { legajo } = req.params
     const { nombre, apellido, email, isActive } = req.body
 
     const data = await fs.readFile('./data/alumnos.json', 'utf8')
@@ -72,16 +69,16 @@ const putAlumnoByLegajo = async (req, res) => {
       alumnoActual.email,
       alumnoActual.legajo,
       alumnoActual.fechaAlta,
-      alumnoActual.modficacion,
+      alumnoActual.modificacion,
       alumnoActual.isActive
     )
 
     // COnfirmamos si envíaron modificaciones nuevas
-    if (nombre) alumnoObjeto.setNombre(nombre)
-    if (apellido) alumnoObjeto.setApellido(apellido)
-    if (email) alumnoObjeto.setEmail(email)
-    if (isActive !== undefined) alumnoObjeto.setIsActive(isActive)
-    alumnoObjeto.setModificacion(new Date().toISOString().split('T')[0])
+    if (nombre) alumnoModificacion.setNombre(nombre)
+    if (apellido) alumnoModificacion.setApellido(apellido)
+    if (email) alumnoModificacion.setEmail(email)
+    if (isActive !== undefined) alumnoModificacion.setIsActive(isActive)
+    alumnoModificacion.setModificacion(new Date().toISOString().split('T')[0])
 
     alumnos[index] = alumnoModificacion.getAllAttributes()
 
@@ -93,7 +90,7 @@ const putAlumnoByLegajo = async (req, res) => {
 
     return res.status(200).json({
       msg: 'Se modificaron correctamente los datos!',
-      nuevoAlumno: alumnos[index]
+      alumnoModificado: alumnos[index]
     })
     /* a */
   } catch (error) {
@@ -104,12 +101,48 @@ const putAlumnoByLegajo = async (req, res) => {
   }
 }
 
-// const deleteAlumnoByLegajo = async (req, res) => {}
+const postAlumno = async (req, res) => {
+  try {
+    const { nombre, apellido, email } = req.body
+
+    const data = await fs.readFile('./data/alumnos.json', 'utf8')
+    const alumnos = JSON.parse(data)
+
+    let nuevoLegajo = 0
+
+    if (alumnos) {
+      const legajos = alumnos.map((alumno) => alumno.legajo)
+      nuevoLegajo = Math.max(...legajos) + 1
+      console.log(`Nuevo legajo creado: ${nuevoLegajo} `)
+    }
+
+    const nuevoAlumno = new AlumnoModel(nombre, apellido, email, nuevoLegajo)
+    alumnos.push(nuevoAlumno.getAllAttributes())
+
+    await fs.writeFile(
+      './data/alumnos.json',
+      JSON.stringify(alumnos, null, 2),
+      'utf8'
+    )
+
+    return res.status(201).json({
+      msg: 'Se modificaron correctamente los datos!',
+      nuevoAlumno: nuevoAlumno.getAllAttributes()
+    })
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({
+      error: 'Error en dar de alta un nuevo alumno'
+    })
+  }
+}
+
+const deleteAlumnoByLegajo = async (req, res) => {}
 
 module.exports = {
   getAlumnoAll,
   getAlumnoByLegajo,
-  // postAlumno,
-  putAlumnoByLegajo /*,
-  deleteAlumnoByLegajo */
+  postAlumno,
+  putAlumnoByLegajo,
+  deleteAlumnoByLegajo
 }

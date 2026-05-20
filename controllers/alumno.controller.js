@@ -1,4 +1,5 @@
 const fs = require('fs').promises
+// const { stringify } = require('querystring')
 const { AlumnoModel } = require('../models/alumno.model.ts')
 
 const getAlumnoAll = async (req, res) => {
@@ -137,7 +138,44 @@ const postAlumno = async (req, res) => {
   }
 }
 
-const deleteAlumnoByLegajo = async (req, res) => {}
+const deleteAlumnoByLegajo = async (req, res) => {
+  try {
+    const { legajo } = req.params
+
+    const data = await fs.readFile('./data/alumnos.json', 'utf8')
+    const alumnos = JSON.parse(data)
+
+    const index = alumnos.findIndex(
+      (alumnoI) => alumnoI.legajo === Number(legajo)
+    )
+
+    if (index === -1) {
+      return res.status(404).json({
+        msg: 'No se encontró el alumno'
+      })
+    }
+
+    const alumnoEliminado = alumnos[index]
+
+    alumnos.splice(index, 1)
+
+    await fs.writeFile(
+      './data/alumnos.json',
+      JSON.stringify(alumnos, null, 2),
+      'utf8'
+    )
+
+    return res.status(200).json({
+      msg: `Se eliminó correctamente el alumno con el lejajo n° ${legajo}`,
+      alumnoEliminado
+    })
+  } catch (error) {
+    console.errorg(error)
+    return res.status(500).json({
+      error: 'No se pudo eliminar el alumno'
+    })
+  }
+}
 
 module.exports = {
   getAlumnoAll,

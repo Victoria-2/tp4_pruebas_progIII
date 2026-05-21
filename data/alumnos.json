@@ -219,9 +219,9 @@
     "legajo": 10025,
     "nombre": "Tomás",
     "apellido": "Méndez",
-    "email": "t.mendez@facultad.edu.ar",
+    "email": "mendezT@facultad.edu.ar",
     "fechaAlta": "2026-05-14",
-    "modificacion": "2026-05-14",
+    "modificacion": "2026-05-21",
     "isActive": true
   },
   {
@@ -240,6 +240,40 @@
     "email": "alRactchz@facultad.edu.ar",
     "fechaAlta": "2026-05-20",
     "modificacion": "2026-05-20",
+    "isActive": true
+  },
+  {
+    "legajo": 10028,
+    "nombre": "Victoria",
+    "apellido": "Ruiz",
+    "email": "mail@gmail.com",
+    "fechaAlta": "2026-05-20",
+    "modificacion": "2026-05-20",
+    "isActive": true
+  },
+  {
+    "legajo": 10029,
+    "nombre": "Victoria",
+    "apellido": "Ruiz",
+    "email": "mail@gmail.com",
+    "fechaAlta": "2026-05-20",
+    "modificacion": "2026-05-20",
+    "isActive": true
+  },
+  {
+    "legajo": 10030,
+    "nombre": "Victoria",
+    "email": "victoria@facultad.edu.ar",
+    "fechaAlta": "2026-05-20",
+    "modificacion": "2026-05-20",
+    "isActive": true
+  },
+  {
+    "legajo": 10031,
+    "nombre": 15613,
+    "email": 55895,
+    "fechaAlta": "2026-05-21",
+    "modificacion": "2026-05-21",
     "isActive": true
   }
 ]

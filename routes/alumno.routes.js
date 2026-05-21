@@ -16,6 +16,6 @@ rutas.get('/', getAlumnoAll)
 rutas.get('/:legajo', getAlumnoByLegajo)
 rutas.post('/', postAlumno)
 rutas.put('/:legajo', validatePutAlumno, putAlumnoByLegajo)
-rutas.delete('/:legajo', deleteAlumnoByLegajo)
+rutas.delete('/delete/:legajo', deleteAlumnoByLegajo)
 
 module.exports = rutas

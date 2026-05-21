@@ -138,6 +138,48 @@ const postAlumno = async (req, res) => {
   }
 }
 
+// const deleteAlumnoByLegajo = async (req, res) => {
+//   try {
+//     const { legajo } = req.params
+
+//     // Diagnóstico 1: ¿Llega bien el parámetro?
+//     console.log('--> Intentando eliminar legajo:', legajo)
+
+//     const data = await fs.readFile('./data/alumnos.json', 'utf8')
+//     const alumnos = JSON.parse(data)
+
+//     const index = alumnos.findIndex(
+//       (alumnoI) => alumnoI.legajo === Number(legajo)
+//     )
+
+//     if (index === -1) {
+//       return res.status(404).json({
+//         msg: `No se encontró el alumno con legajo n° ${legajo}`
+//       })
+//     }
+
+//     const alumnoEliminado = alumnos[index]
+//     alumnos.splice(index, 1)
+
+//     await fs.writeFile(
+//       './data/alumnos.json',
+//       JSON.stringify(alumnos, null, 2),
+//       'utf8'
+//     )
+
+//     return res.status(200).json({
+//       msg: `Se eliminó correctamente`,
+//       alumnoEliminado: alumnoEliminado
+//     })
+//   } catch (error) {
+//     return res.status(500).json({
+//       error: 'No se pudo eliminar el alumno',
+//       EL_ERROR_REAL_ES: error.message,
+//       DONDE_SE_ROMPIO: error.stack.split('\n')[1]
+//     })
+//   }
+// }
+
 const deleteAlumnoByLegajo = async (req, res) => {
   try {
     const { legajo } = req.params
@@ -146,35 +188,38 @@ const deleteAlumnoByLegajo = async (req, res) => {
     const alumnos = JSON.parse(data)
 
     const index = alumnos.findIndex(
-      (alumnoI) => alumnoI.legajo === Number(legajo)
+      (alumno) => alumno.legajo === Number(legajo)
     )
 
     if (index === -1) {
       return res.status(404).json({
-        msg: 'No se encontró el alumno'
+        msg: `No se encontró el alumno con el legajo n° ${legajo}`
       })
     }
 
-    const alumnoEliminado = alumnos[index]
+    const alumnoEncontrado = alumnos[index]
 
     alumnos.splice(index, 1)
 
-    await fs.writeFile(
-      './data/alumnos.json',
-      JSON.stringify(alumnos, null, 2),
-      'utf8'
-    )
+    // const index = alumnos.findIndex(
+    //   (alumno) => alumno.legajo === Number(legajo)
+    // )
+
+    // if (index === -1) {
+    //   return res.status(404).json({
+    //     msg: `No se encontró el alumno con el legajo n° ${legajo}`
+    //   })
+    // }
+
+    fs.writeFile('./data/alumnos.json', JSON.stringfy(alumnos, null, 2), 'utf8')
 
     return res.status(200).json({
-      msg: `Se eliminó correctamente el alumno con el lejajo n° ${legajo}`,
-      alumnoEliminado
+      msg: `Se eliminó correctamente el alumno con el legajo n° ${alumnoEncontrado.legajo}`,
+      alumno: `${alumnoEncontrado}`
     })
   } catch (error) {
-    console.errorg(error)
     return res.status(500).json({
-      error: 'No se pudo eliminar el alumno',
-      mensajeOriginalDeJavaScript: error.message,
-      stackTrace: error.stack
+      error: 'No se puedo eliminar el alumno del sistema'
     })
   }
 }

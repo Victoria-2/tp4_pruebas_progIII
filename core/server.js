@@ -3,19 +3,19 @@ const cors = require('cors')
 require('dotenv').config()
 
 class Server {
-  constructor() {
+  constructor () {
     this.app = express()
     this.port = process.env.PORT || 3000
     this.middleware()
     this.rutas()
   }
 
-  middleware() {
+  middleware () {
     this.app.use(cors())
     this.app.use(express.json())
   }
 
-  rutas() {
+  rutas () {
     this.app.use('/alumnos', require('../routes/alumno.routes'))
     /*
     this.app.use('/materias', require('../routes/extra/materia.routes'))
@@ -37,7 +37,7 @@ class Server {
     })
   }
 
-  listen() {
+  listen () {
     this.app.listen(this.port, () => {
       console.log(`La API esta escuchando el el puerto: ${this.port}`)
     })

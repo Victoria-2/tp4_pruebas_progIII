@@ -27,15 +27,13 @@ class Server {
     this.app.use((req, res, next) => {
       return res.status(400).json({ msg: 'Error.' })
     })
-    this.app.use((req, res, next) => {
+    this.app.use((err, req, res, next) => {
+      console.error(err.stack)
       return res.status(404).json({ msg: 'Error. Pagina no encontrada' })
     })
-
     this.app.use((err, req, res, next) => {
-      console.error('Error capturado en el servidor global:', err.stack)
-      return res
-        .status(500)
-        .json({ msg: 'Internal Server Error', detalle: err.message })
+      console.error(err.stack)
+      return res.status(500).json({ msg: 'Internal Server Error' })
     })
   }
 

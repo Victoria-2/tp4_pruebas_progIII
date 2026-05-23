@@ -171,15 +171,6 @@
     "isActive": true
   },
   {
-    "legajo": 10020,
-    "nombre": "Joaquín",
-    "apellido": "Ramos",
-    "email": "j.ramos@facultad.edu.ar",
-    "fechaAlta": "2026-05-05",
-    "modificacion": "2026-05-05",
-    "isActive": false
-  },
-  {
     "legajo": 10021,
     "nombre": "Bautista",
     "apellido": "Herrera",
@@ -204,76 +195,6 @@
     "email": "jc.vega@facultad.edu.ar",
     "fechaAlta": "2026-05-11",
     "modificacion": "2026-05-11",
-    "isActive": true
-  },
-  {
-    "legajo": 10024,
-    "nombre": "Catalina",
-    "apellido": "Blanco",
-    "email": "c.blanco@facultad.edu.ar",
-    "fechaAlta": "2026-05-12",
-    "modificacion": "2026-05-12",
-    "isActive": true
-  },
-  {
-    "legajo": 10025,
-    "nombre": "Tomás",
-    "apellido": "Méndez",
-    "email": "mendezT@facultad.edu.ar",
-    "fechaAlta": "2026-05-14",
-    "modificacion": "2026-05-21",
-    "isActive": true
-  },
-  {
-    "legajo": 10026,
-    "nombre": "Alejandra",
-    "apellido": "Ratchtz",
-    "email": "alRactchz@facultad.edu.ar",
-    "fechaAlta": "2026-05-20",
-    "modificacion": "2026-05-20",
-    "isActive": true
-  },
-  {
-    "legajo": 10027,
-    "nombre": "Alejandra",
-    "apellido": "Ratchtz",
-    "email": "alRactchz@facultad.edu.ar",
-    "fechaAlta": "2026-05-20",
-    "modificacion": "2026-05-20",
-    "isActive": true
-  },
-  {
-    "legajo": 10028,
-    "nombre": "Victoria",
-    "apellido": "Ruiz",
-    "email": "mail@gmail.com",
-    "fechaAlta": "2026-05-20",
-    "modificacion": "2026-05-20",
-    "isActive": true
-  },
-  {
-    "legajo": 10029,
-    "nombre": "Victoria",
-    "apellido": "Ruiz",
-    "email": "mail@gmail.com",
-    "fechaAlta": "2026-05-20",
-    "modificacion": "2026-05-20",
-    "isActive": true
-  },
-  {
-    "legajo": 10030,
-    "nombre": "Victoria",
-    "email": "victoria@facultad.edu.ar",
-    "fechaAlta": "2026-05-20",
-    "modificacion": "2026-05-20",
-    "isActive": true
-  },
-  {
-    "legajo": 10031,
-    "nombre": 15613,
-    "email": 55895,
-    "fechaAlta": "2026-05-21",
-    "modificacion": "2026-05-21",
     "isActive": true
   }
 ]

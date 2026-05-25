@@ -63,7 +63,7 @@ const postNewAlumno = async (req, res) => {
 
     fs.writeFile(
       './data/alumnos.json',
-      JSON.stringify(alumnoNuevo, null, 2),
+      JSON.stringify(alumnos, null, 2),
       'utf8'
     )
 

@@ -1,14 +1,5 @@
 [
   {
-    "legajo": 10001,
-    "nombre": "Mora",
-    "apellido": "García",
-    "email": "m.garcia@facultad.edu.ar",
-    "fechaAlta": "2026-03-02",
-    "modificacion": "2026-03-02",
-    "isActive": true
-  },
-  {
     "legajo": 10002,
     "nombre": "Liam",
     "apellido": "Rodríguez",
@@ -195,6 +186,87 @@
     "email": "jc.vega@facultad.edu.ar",
     "fechaAlta": "2026-05-11",
     "modificacion": "2026-05-11",
+    "isActive": true
+  },
+  {
+    "legajo": 10024,
+    "nombre": "aa",
+    "apellido": "aa",
+    "email": "m.garcia@facultad.edu.ar",
+    "fechaAlta": "2026-05-25",
+    "modificacion": "2026-05-25",
+    "isActive": true
+  },
+  {
+    "legajo": 10025,
+    "nombre": "aa",
+    "apellido": "aa",
+    "email": "aa",
+    "fechaAlta": "2026-05-25",
+    "modificacion": "2026-05-25",
+    "isActive": true
+  },
+  {
+    "legajo": 10026,
+    "nombre": "aa",
+    "apellido": "aa",
+    "email": "m.garcia@facultad.edu.ar",
+    "fechaAlta": "2026-05-25",
+    "modificacion": "2026-05-25",
+    "isActive": true
+  },
+  {
+    "legajo": 10027,
+    "nombre": "aa",
+    "apellido": "aa",
+    "email": "aa",
+    "fechaAlta": "2026-05-25",
+    "modificacion": "2026-05-25",
+    "isActive": true
+  },
+  {
+    "legajo": 10028,
+    "nombre": "aa",
+    "apellido": "aa",
+    "email": "aa",
+    "fechaAlta": "2026-05-25",
+    "modificacion": "2026-05-25",
+    "isActive": true
+  },
+  {
+    "legajo": 10029,
+    "nombre": "aa",
+    "apellido": "aa",
+    "email": "m.garcia@facultad.edu.ar",
+    "fechaAlta": "2026-05-25",
+    "modificacion": "2026-05-25",
+    "isActive": true
+  },
+  {
+    "legajo": 10030,
+    "nombre": "aa",
+    "apellido": "aa",
+    "email": "aa",
+    "fechaAlta": "2026-05-25",
+    "modificacion": "2026-05-25",
+    "isActive": true
+  },
+  {
+    "legajo": 10031,
+    "nombre": "aa",
+    "apellido": "aa",
+    "email": "aa",
+    "fechaAlta": "2026-05-25",
+    "modificacion": "2026-05-25",
+    "isActive": true
+  },
+  {
+    "legajo": 10032,
+    "nombre": "aa",
+    "apellido": "aa",
+    "email": "m.garcia@facultad.edu.ar",
+    "fechaAlta": "2026-05-25",
+    "modificacion": "2026-05-25",
     "isActive": true
   }
 ]

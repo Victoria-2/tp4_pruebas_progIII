@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Alumnos - TP4</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 20px;
+      }
+      .main-container {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+      }
+      .column-left {
+        flex: 2;
+      }
+      .column-right {
+        flex: 1;
+        min-width: 320px;
+      }
+      fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 15px;
+      }
+      label {
+        font-weight: bold;
+        margin-top: 5px;
+      }
+      input,
+      select,
+      button {
+        padding: 6px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f4f4f4;
+      }
+      .acciones-busqueda {
+        margin-bottom: 15px;
+        background: #f9f9f9;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+
+      /* Contenedor para que los botones queden ordenados en cuadrícula */
+      .botonera-formulario {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 15px;
+      }
+      .botonera-formulario button {
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h1>Sistema de alumnos</h1>
+      <h3>Cuestionarios, botones y tablas para probar la API del TP N°4</h3>
+    </div>
+
+    <hr />
+
+    <div class="acciones-busqueda">
+      <label for="form-buscar-legajo">Buscar por Legajo: </label>
+      <input type="number" id="form-buscar-legajo" placeholder="Ej: 10001" />
+      <button id="btn-buscar-por-id">🔍 Buscar ID</button>
+      <button id="btn-cargar-alumnos">📋 Cargar Todos</button>
+      <h5 id="response-buscar-por-id"></h5>
+    </div>
+
+    <div class="main-container">
+      <div class="column-left">
+        <h2>Listado de alumnos (GET)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Legajo</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Email</th>
+              <th>Estado</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-alumnos">
+            <tr>
+              <td colspan="6" style="text-align: center; color: #666">
+                Haga clic en "Cargar Todos" para sincronizar datos.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="column-right">
+        <h2>Datos alumno:</h2>
+        <div class="form" id="form">
+          <fieldset>
+            <label>Legajo (Ingresar para Modificar o Borrar):</label>
+            <input
+              type="number"
+              id="form-legajo"
+              placeholder="ID automático al agregar"
+            />
+
+            <label>Nombre:</label>
+            <input
+              type="text"
+              id="form-nombre"
+              required
+              placeholder="Ej: Mora"
+            />
+
+            <label>Apellido:</label>
+            <input
+              type="text"
+              id="form-apellido"
+              required
+              placeholder="Ej: García"
+            />
+
+            <label>Email Institucional:</label>
+            <input
+              type="email"
+              id="form-email"
+              required
+              placeholder="Ej: m.garcia@facultad.edu.ar"
+            />
+
+            <label>Estado:</label>
+            <select id="form-estado">
+              <option value="true">Activo (True)</option>
+              <option value="false">Inactivo (False)</option>
+            </select>
+
+            <div class="botonera-formulario">
+              <button id="btn-agregar-post" style="background-color: #d4edda">
+                ➕ Agregar (POST)
+              </button>
+              <button id="btn-modificar-put" style="background-color: #fff3cd">
+                🔄 Modificar (PUT)
+              </button>
+              <button
+                id="btn-borrar-delete"
+                style="background-color: #f8d7da; color: #721c24"
+              >
+                🗑️ Borrar (DELETE)
+              </button>
+              <button id="btn-limpiar-campos" style="background-color: #e2e3e5">
+                🧹 Limpiar Campos
+              </button>
+              <h5 id="response-form"></h5>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

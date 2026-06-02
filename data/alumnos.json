@@ -268,5 +268,14 @@
     "fechaAlta": "2026-05-25",
     "modificacion": "2026-05-25",
     "isActive": true
+  },
+  {
+    "legajo": 10033,
+    "nombre": "aa",
+    "apellido": "aa",
+    "email": "d.ruiz@facultad.edu.ar",
+    "fechaAlta": "2026-05-27",
+    "modificacion": "2026-05-27",
+    "isActive": true
   }
 ]

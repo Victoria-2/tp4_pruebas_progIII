@@ -1,21 +1,21 @@
-# 1. Usamos una imagen ultra liviana de Node.js v20
+#  Establecemos una 'imagen' liviana de mnode (5mb)
 FROM node:20-alpine
 
-# 2. Definimos la carpeta de trabajo dentro del contenedor
+# Al crear un contenedor, debemos establecer la carpeta de trabajo (ruta por convención)
 WORKDIR /usr/src/app
 
-# 3. Copiamos los archivos de dependencias
+# Realizamos una copia del archivo con los módulos/dependencias (package.json)
 COPY package*.json ./
 
-# 4. Instalamos las librerías de producción
+# Se intalan las librerias de 'package.json'
 RUN npm install
 
-# 5. Copiamos todo el código de la API (incluyendo tu archivo JSON de datos)
+# Copiamos todo el código de la API al entonrno de Docker
 COPY . .
 
-# 6. IMPORTANTE PARA RENDER: Usamos la variable de entorno para exponer el puerto
-ENV PORT=3001
+# Puerto
+ENV PORT=3000
 EXPOSE ${PORT}
 
-# 7. Comando de arranque de la API
+# Qué se ejecuta en el arranque
 CMD ["npm", "run", "start"]

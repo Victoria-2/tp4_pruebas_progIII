@@ -11,4 +11,21 @@ const getAllNotas = async (req, res, next) => {
   }
 }
 
-module.exports = { getAllNotas }
+const getNotaById = async (req, res, next) => {
+  try {
+    notaEncontrada = await NotaModel.findById(Number(req.params.id))
+
+    if (notaEncontrada === undefined) {
+      return res.status(400).json({
+        msg: `No se pudo encontrar la nota con el id $(req.params.id)`
+      })
+    }
+
+    return res.status(200).json(notaEncontrada)
+  } catch (error) {
+    console.log(error)
+    next(error)
+  }
+}
+
+module.exports = { getAllNotas, getNotaById }

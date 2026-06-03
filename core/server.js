@@ -1,43 +1,40 @@
 const express = require('express')
 const cors = require('cors')
 require('dotenv').config()
+const errorHandler = require('../middleware/error-handler.middleware')
 
 class Server {
-  constructor () {
+  constructor() {
     this.app = express()
     this.port = process.env.PORT || 3000
     this.middleware()
     this.rutas()
+    this.errorHandlerGlobal()
   }
 
-  middleware () {
+  middleware() {
     this.app.use(cors())
     this.app.use(express.json())
   }
 
-  rutas () {
+  rutas() {
     this.app.use('/alumnos', require('../routes/alumno.routes'))
     /*
-    this.app.use('/materias', require('../routes/extra/materia.routes'))
-    this.app.use('/notas', require('../routes/extra/nota.routes'))
-    this.app.use('/profesores', require('../routes/extra/profesor.routes'))
-    */
+    this.app.use('/materias', require('../routes/extra/materia.routes')) */
+    this.app.use('/notas', require('../routes/extras/nota.routes'))
+    /* this.app.use('/profesores', require('../routes/extra/profesor.routes'))
+     */
+  }
 
-    // manejo de errores
-    this.app.use((req, res, next) => {
-      return res.status(400).json({ msg: 'Error.' })
-    })
+  errorHandlerGlobal() {
     this.app.use((err, req, res, next) => {
       console.error(err.stack)
       return res.status(404).json({ msg: 'Error. Pagina no encontrada' })
     })
-    this.app.use((err, req, res, next) => {
-      console.error(err.stack)
-      return res.status(500).json({ msg: 'Internal Server Error' })
-    })
+    this.app.use(errorHandler)
   }
 
-  listen () {
+  listen() {
     this.app.listen(this.port, () => {
       console.log(`La API esta escuchando el el puerto: ${this.port}`)
     })

@@ -5,6 +5,7 @@
     "moduleResolution": "node" /* Cómo busca los archivos Node */,
     "ignoreDeprecations": "6.0",
     "esModuleInterop": true /* Permite compatibilidad total entre require e import */,
+    "types": ["node"],
     "forceConsistentCasingInFileNames": true /* Respeta mayúsculas y minúsculas */,
     "strict": true /* Habilita el tipado estricto de TS */,
     "skipLibCheck": true /* Omite la comprobación de tipos de las librerías */

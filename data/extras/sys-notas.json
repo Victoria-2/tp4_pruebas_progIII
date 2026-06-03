@@ -173,5 +173,38 @@
     "idMateria": "PROG1",
     "nota": 10,
     "fecha": "01-07-24"
+  },
+  {
+    "id": 26
+  },
+  {
+    "id": 27
+  },
+  {
+    "id": 28
+  },
+  {
+    "id": 29
+  },
+  {
+    "id": 30,
+    "legajo": 10003,
+    "idMateria": "SIST1",
+    "nota": 8,
+    "fecha": "25-03-26"
+  },
+  {
+    "id": 31,
+    "legajo": 10003,
+    "idMateria": "SIST1",
+    "nota": 8,
+    "fecha": "25-03-26"
+  },
+  {
+    "id": 32,
+    "legajo": 10003,
+    "idMateria": "SIST1",
+    "nota": 8,
+    "fecha": "25-03-26"
   }
 ]

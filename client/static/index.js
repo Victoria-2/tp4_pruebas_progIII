@@ -27,13 +27,12 @@ document.addEventListener('DOMContentLoaded', obtenerTodosLosAlumnos)
 // ==========================================================
 // 🟢 METHOD: GET (getAlumnoAll)
 // ==========================================================
-async function obtenerTodosLosAlumnos() {
+async function obtenerTodosLosAlumnos () {
   try {
     const response = await fetch(API_URL)
 
     // Manejo del estado 500 programado en el catch de tu controller
-    if (!response.ok)
-      throw new Error('No se pudieron obtener los datos de los alumnos')
+    if (!response.ok) { throw new Error('No se pudieron obtener los datos de los alumnos') }
 
     const alumnos = await response.json()
     renderizarTabla(alumnos)
@@ -46,7 +45,7 @@ async function obtenerTodosLosAlumnos() {
 // ==========================================================
 // 🔵 METHOD: GET /:legajo (getAlumnoById)
 // ==========================================================
-async function buscarUnAlumno() {
+async function buscarUnAlumno () {
   const legajo = document.getElementById('busqueda-legajo').value
   if (!legajo) {
     alert('Por favor, ingrese un número de legajo para buscar.')
@@ -75,11 +74,11 @@ async function buscarUnAlumno() {
 }
 
 // Helper para dibujar las filas en la tabla
-function renderizarTabla(alumnos) {
+function renderizarTabla (alumnos) {
   tablaAlumnos.innerHTML = ''
 
   if (alumnos.length === 0) {
-    tablaAlumnos.innerHTML = `<tr><td colspan="5" style="text-align: center;">No hay alumnos registrados en el sistema.</td></tr>`
+    tablaAlumnos.innerHTML = '<tr><td colspan="5" style="text-align: center;">No hay alumnos registrados en el sistema.</td></tr>'
     return
   }
 
@@ -87,8 +86,8 @@ function renderizarTabla(alumnos) {
     const fila = document.createElement('tr')
 
     const badgeEstado = alumno.isActive
-      ? `<span class="badge-activo">Activo</span>`
-      : `<span class="badge-inactivo">De Baja</span>`
+      ? '<span class="badge-activo">Activo</span>'
+      : '<span class="badge-inactivo">De Baja</span>'
 
     fila.innerHTML = `
             <td><strong>${alumno.legajo}</strong></td>
@@ -175,7 +174,7 @@ formAlumno.addEventListener('submit', async (e) => {
 // ==========================================================
 // 🔴 METHOD: DELETE (deleteAlumnoByLegajo)
 // ==========================================================
-async function eliminarAlumno(legajo) {
+async function eliminarAlumno (legajo) {
   const confirmacion = confirm(
     `¿Está seguro de que desea eliminar permanentemente al alumno con legajo n° ${legajo}?`
   )
@@ -206,7 +205,7 @@ async function eliminarAlumno(legajo) {
 // ==========================================================
 
 // Pasa los datos de la fila de la tabla directo al formulario para permitir editarlos
-function cargarAlumnoEnFormulario(alumno) {
+function cargarAlumnoEnFormulario (alumno) {
   formTitulo.innerText = `🟠 Editar Alumno (Legajo: ${alumno.legajo})`
   btnSubmit.innerText = 'Actualizar Datos'
   btnSubmit.className = 'btn-secondary'
@@ -229,7 +228,7 @@ function cargarAlumnoEnFormulario(alumno) {
 }
 
 // Limpia el formulario y lo devuelve a su estado natural de "Alta"
-function resetearFormulario() {
+function resetearFormulario () {
   formTitulo.innerText = '🟡 Registrar Nuevo Alumno'
   btnSubmit.innerText = 'Guardar Alumno'
   btnSubmit.className = 'btn-primary'

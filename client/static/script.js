@@ -39,13 +39,13 @@ btnLimpiarCampos.addEventListener('click', limpiarFormulario)
 
 // GET (getAlumnoAll)
 
-async function getAlumnoAll() {
+async function getAlumnoAll () {
   try {
     const response = await fetch(API_URL)
 
     if (!response.ok) {
       console.error(response.status, response.error)
-      tablaAlumnos.innerHTML = `<tr><td colspan="5" style="color: red; text-align: center;">❌ Error al traer los datos</td></tr>`
+      tablaAlumnos.innerHTML = '<tr><td colspan="5" style="color: red; text-align: center;">❌ Error al traer los datos</td></tr>'
     }
 
     const alumnos = await response.json()
@@ -57,7 +57,7 @@ async function getAlumnoAll() {
 }
 
 // GET (getAlumnoById)
-async function getAlumnoById() {
+async function getAlumnoById () {
   try {
     responseBuscarPorId.innerText = ''
 
@@ -71,7 +71,7 @@ async function getAlumnoById() {
 
     if (!response.ok) {
       responseBuscarPorId.innerText = 'No encontrado'
-      tablaAlumnos.innerHTML = `<tr><td colspan="6" style="text-align: center; color: red;">Alumno inexistente</td></tr>`
+      tablaAlumnos.innerHTML = '<tr><td colspan="6" style="text-align: center; color: red;">Alumno inexistente</td></tr>'
       return
     }
 
@@ -85,7 +85,7 @@ async function getAlumnoById() {
 }
 
 // POST (postNewAlumno)
-async function postNewAlumno() {
+async function postNewAlumno () {
   try {
     // responseForm.innerHTML = ''
 
@@ -181,7 +181,7 @@ async function postNewAlumno() {
 // }
 
 // DELETE (deleteAlumnoBylegajo)
-async function deleteAlumnoBylegajo() {
+async function deleteAlumnoBylegajo () {
   try {
     responseForm.innerHTML = ''
 
@@ -229,7 +229,7 @@ async function deleteAlumnoBylegajo() {
 }
 
 // FUNCIONES
-function copiarAlFormulario(alumno) {
+function copiarAlFormulario (alumno) {
   formLegajo.value = alumno.legajo
   formNombre.value = alumno.nombre
   formApellido.value = alumno.apellido
@@ -237,7 +237,7 @@ function copiarAlFormulario(alumno) {
   formEstado.value = alumno.isActive ? 'true' : 'false'
 }
 
-function limpiarFormulario() {
+function limpiarFormulario () {
   formLegajo.value = ''
   formNombre.value = ''
   formApellido.value = ''
@@ -247,9 +247,9 @@ function limpiarFormulario() {
   formBuscarLegajo.value = ''
 }
 
-function renderizarTabla(alumnos) {
+function renderizarTabla (alumnos) {
   if (alumnos.length === 0) {
-    tablaAlumnos.innerHTML = `<tr><td colspan="5" style="text-align: center;">No hay alumnos registrados en el sistema.</td></tr>`
+    tablaAlumnos.innerHTML = '<tr><td colspan="5" style="text-align: center;">No hay alumnos registrados en el sistema.</td></tr>'
     return
   }
 

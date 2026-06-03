@@ -4,7 +4,7 @@ require('dotenv').config()
 const errorHandler = require('../middleware/error-handler.middleware')
 
 class Server {
-  constructor() {
+  constructor () {
     this.app = express()
     this.port = process.env.PORT || 3000
     this.middleware()
@@ -12,12 +12,12 @@ class Server {
     this.errorHandlerGlobal()
   }
 
-  middleware() {
+  middleware () {
     this.app.use(cors())
     this.app.use(express.json())
   }
 
-  rutas() {
+  rutas () {
     this.app.use('/alumnos', require('../routes/alumno.routes'))
     /*
     this.app.use('/materias', require('../routes/extra/materia.routes')) */
@@ -26,7 +26,7 @@ class Server {
      */
   }
 
-  errorHandlerGlobal() {
+  errorHandlerGlobal () {
     this.app.use((err, req, res, next) => {
       console.error(err.stack)
       return res.status(404).json({ msg: 'Error. Pagina no encontrada' })
@@ -34,7 +34,7 @@ class Server {
     this.app.use(errorHandler)
   }
 
-  listen() {
+  listen () {
     this.app.listen(this.port, () => {
       console.log(`La API esta escuchando el el puerto: ${this.port}`)
     })

@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize')
+import { Sequelize } from 'sequelize'
 const config = require('../n-config/n-database.config')
 
 const env = process.env.NODE_ENV || 'development'
@@ -6,7 +6,7 @@ const dbConfig = config[env]
 
 // inicializar conexión a DB con sequelize
 
-const sequelize = new Sequelize(
+export const sequelize = new Sequelize(
   dbConfig.database,
   dbConfig.username,
   dbConfig.password,
@@ -19,11 +19,11 @@ const sequelize = new Sequelize(
   }
 )
 
-const verificarConexion = async () => {
+const verificarConexion = async (): Promise<void> => {
   try {
     await sequelize.authenticate()
     console.log(`Conectado con éxito a las tablas en: ${dbConfig.host}`)
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error en la base de datos: ', error.message)
   }
 }

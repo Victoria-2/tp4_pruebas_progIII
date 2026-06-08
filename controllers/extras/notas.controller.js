@@ -3,7 +3,7 @@ const { NotaModel } = require('../../models/extras/nota.model')
 
 const getAllNotas = async (req, res, next) => {
   try {
-    notas = await NotaModel.findAll()
+    notas = await NotaModel.findAllNotes()
     return res.status(200).json(notas)
   } catch (error) {
     console.log(error)
@@ -32,13 +32,13 @@ const postNota = async (req, res, next) => {
   try {
     const { legajo, idMateria, nota, fecha } = req.body
 
-    NotaModel.create({
+    notaCreada = await NotaModel.createNote({
       legajo: Number(legajo),
       idMateria,
       nota: Number(nota),
       fecha
     })
-    const notaCreada = await NotaModel.findLastOne()
+
     return res.status(201).json({
       msg: 'Nota guardada correctamente en el sistema',
       data: notaCreada

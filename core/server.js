@@ -3,6 +3,7 @@ const cors = require('cors')
 require('dotenv').config()
 const errorHandler = require('../middleware/error-handler.middleware')
 const { sequelize } = require('../models/n-index.model')
+const { establecerCardinalidad } = require('../models/cardinalidades.model')
 
 class Server {
   constructor() {
@@ -30,6 +31,11 @@ class Server {
 
   async connectToDataBase() {
     try {
+      establecerCardinalidad()
+      console.log(
+        'Cardinalidad y relaciones entre trablas establecidas correctamente'
+      )
+
       await sequelize.sync({ alter: false })
       console.log('Database sincronizada correctamente')
     } catch (error) {

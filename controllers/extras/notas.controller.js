@@ -13,7 +13,7 @@ const getAllNotas = async (req, res, next) => {
 
 const getNotaById = async (req, res, next) => {
   try {
-    notaEncontrada = await NotaModel.findById(Number(req.params.id))
+    notaEncontrada = await NotaModel.findById(req.params.id)
 
     if (notaEncontrada === undefined) {
       return res.status(400).json({
@@ -49,4 +49,38 @@ const postNota = async (req, res, next) => {
   }
 }
 
-module.exports = { getAllNotas, getNotaById, postNota }
+const getNotaMateria = async (req, res, next) => {
+  try {
+    const join = await NotaModel.findNoteAndMateria()
+    return res.status(200).json(join)
+  } catch (error) {
+    console.log(error)
+    next(error)
+  }
+}
+
+const getTopNotes = async (req, res, next) => {
+  try {
+    const { idMateria } = req.params.idMateria
+
+    if (!idMateria) {
+      return res.status(400).json({
+        msg: 'Falta el parámetro idMateria en la consulta (query).'
+      })
+    }
+
+    const notas = await NotaModel.findTopNotes(idMateria)
+    return res.status(200).json(notas)
+  } catch (error) {
+    console.log(error)
+    next(error)
+  }
+}
+
+module.exports = {
+  getAllNotas,
+  getNotaById,
+  postNota,
+  getNotaMateria,
+  getTopNotes
+}

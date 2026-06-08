@@ -3,10 +3,14 @@ const rutas = Router()
 const {
   getAllNotas,
   getNotaById,
-  postNota
+  postNota,
+  getNotaMateria,
+  getTopNotes
 } = require('../../controllers/extras/notas.controller')
 
 rutas.get('/', getAllNotas)
+rutas.get('/join', getNotaMateria)
+rutas.get('/:idMateria', getTopNotes)
 rutas.get('/:id', getNotaById)
 rutas.post('/', postNota)
 

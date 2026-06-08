@@ -4,6 +4,7 @@ import { sequelize } from '../n-index.model'
 import { DataTypes, Model, Optional } from 'sequelize'
 
 import { InterfaceNota } from '../../interfaces/nota.interface'
+import { MateriaModel } from './materia.model'
 // import { CalculosNotas } from '../../utils/generarNum' // no es necesario porque lo hace la DB
 
 // const jsonPath = path.resolve(__dirname, '../../data/extras/sys-notas.json')
@@ -22,11 +23,11 @@ export class NotaModel
   declare readonly createdAt: Date
   declare readonly updatedAt: Date
 
-  static async findAllNotes(): Promise<InterfaceNota[]> {
+  static async findAllNotes(): Promise<NotaModel[]> {
     return await NotaModel.findAll()
   }
 
-  static async findById(id: number): Promise<NotaModel | null> {
+  static async findById(id: string): Promise<NotaModel | null> {
     return await NotaModel.findByPk(id)
   }
 
@@ -39,10 +40,42 @@ export class NotaModel
       order: [['id', 'DESC']]
     })
   }
+
+  static async findNoteAndMateria(): Promise<NotaModel[]> {
+    return await NotaModel.findAll({
+      include: [
+        {
+          model: MateriaModel
+          // attributes ['nombre', 'cuatrimestre']
+        }
+      ]
+    })
+  }
+
+  static async findTopNotes(idMateria: string): Promise<NotaModel[]> {
+    return await NotaModel.findAll({
+      // 1. Filtro
+      where: {
+        idMateria: idMateria
+      },
+      // 2. Solo las columnas que me importan de la nota
+      attributes: ['legajo', 'nota'],
+      // 3. Ordenado de mayor a menor nota
+      order: [['nota', 'DESC']],
+      // 4. Solo el Top 5
+      limit: 5,
+      // 5. Acoplamos la tabla materias (JOIN)
+      include: [
+        {
+          model: MateriaModel,
+          attributes: ['nombre'] // De la materia solo me interesa el nombre
+        }
+      ]
+    })
+  }
 }
 
-// vinculamos la tabla de Neon al modelo
-
+// vinculamos la tabla sql al modelo
 NotaModel.init(
   {
     id: {

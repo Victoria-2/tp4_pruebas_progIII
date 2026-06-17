@@ -1,7 +1,7 @@
 const { User } = require('../models')
 const { generarToken } = require('../middleware/auth')
 
-const register = async (req, res) => {
+const postRegister = async (req, res, next) => {
   try {
     const { nombre, email, password } = req.body
 
@@ -25,11 +25,11 @@ const register = async (req, res) => {
     })
   } catch (error) {
     console.error('Error en register:', error)
-    res.status(500).json({ error: 'Error al registrar usuario' })
+    next(error)
   }
 }
 
-const login = async (req, res) => {
+const postLogin = async (req, res, next) => {
   try {
     const { email, password } = req.body
 
@@ -56,11 +56,11 @@ const login = async (req, res) => {
     })
   } catch (error) {
     console.error('Error en login:', error)
-    res.status(500).json({ error: 'Error al iniciar sesión' })
+    next(error)
   }
 }
 
-const perfil = async (req, res) => {
+const getPerfil = async (req, res, next) => {
   try {
     // TODO: Obtener el usuario desde la base de datos usando el id de req.user
     // Pista: req.user fue seteado por el middleware verificarToken
@@ -73,7 +73,7 @@ const perfil = async (req, res) => {
     res.json({ user })
   } catch (error) {
     console.error('Error en perfil:', error)
-    res.status(500).json({ error: 'Error al obtener perfil' })
+    next(error)
   }
 }
 

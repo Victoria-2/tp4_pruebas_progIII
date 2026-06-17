@@ -102,7 +102,7 @@ NotaModel.init(
   },
   {
     sequelize,
-    tableName: 'notas', // nombre de la tabla en ´posgres
+    tableName: 'notas', // nombre de la tabla en postgre
     timestamps: true // Para que maneje automáticamente las columnas createdAt y updatedAt
   }
 )

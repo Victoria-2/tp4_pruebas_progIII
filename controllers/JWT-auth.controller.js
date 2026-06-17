@@ -1,5 +1,5 @@
 const { User } = require('../models')
-const { generarToken } = require('../middleware/auth')
+const { generarToken } = require('../middleware/JWT-auth.middleware')
 
 const postRegister = async (req, res, next) => {
   try {
@@ -77,4 +77,4 @@ const getPerfil = async (req, res, next) => {
   }
 }
 
-module.exports = { register, login, perfil }
+module.exports = { postRegister, postLogin, getPerfil }

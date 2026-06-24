@@ -5,17 +5,18 @@ const { UserModel } = require('../models/JWT-user.model.ts')
 // FINALIZADO
 const postRegister = async (req, res, next) => {
   try {
+    console.log('Datos recibidos en el Body:', req.body)
     const { nombre, email, password } = req.body
 
     // Verificar que no exista un usuario con ese email
-    const existente = await User.findOne({ where: { email } })
+    const existente = await UserModel.findOne({ where: { email } })
     if (existente) {
       return res.status(400).json({ error: 'El email ya está registrado' })
     }
 
     // TODO: Crear el usuario en la base de datos usando User.create()
     // Pista: pasar { nombre, email, password }
-    const user = await UserModel.createUser(nombre, email, password) // <-- reemplazar esta línea
+    const user = await UserModel.createUser({ nombre, email, password }) // <-- reemplazar esta línea
 
     // TODO: Generar un token para el usuario recién creado usando generarToken()
     const token = generarToken(user) // <-- reemplazar esta línea
@@ -44,7 +45,7 @@ const postLogin = async (req, res, next) => {
     }
 
     // TODO: Validar la contraseña usando el método user.validarPassword()
-    const passwordValida = await UserModel.validatePassword(password) // <-- reemplazar esta línea
+    const passwordValida = await user.validatePassword(password) // <-- reemplazar esta línea
 
     if (!passwordValida) {
       return res.status(401).json({ error: 'Credenciales inválidas' })

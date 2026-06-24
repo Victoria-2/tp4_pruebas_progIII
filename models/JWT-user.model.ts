@@ -77,22 +77,11 @@ UserModel.init(
       beforeCreate: async (user) => {
         // TODO: Hashear la contraseña antes de guardar el usuario.
         // Pista: usar bcrypt.hash() con 10 rondas de salt.
-      }
-    }
-  }
-)
-
-/* 
-
-hooks: {
-      // 3. TODO resuelto: Hashear antes de guardar en la base de datos
-      beforeCreate: async (user: UserModel) => {
         if (user.password) {
-          // Generamos el "salt" (bloque de seguridad aleatorio) con 10 rondas
           const salt = await bcrypt.genSalt(10)
-          // Reemplazamos la contraseña en texto plano por su versión encriptada (el hash)
           user.password = await bcrypt.hash(user.password, salt)
         }
       }
     }
-*/
+  }
+)

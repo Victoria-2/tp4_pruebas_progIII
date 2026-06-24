@@ -1,6 +1,8 @@
 const { User } = require('../models')
 const { generarToken } = require('../middleware/JWT-auth.middleware')
+const { UserModel } = require('../models/JWT-user.model.ts')
 
+// FINALIZADO
 const postRegister = async (req, res, next) => {
   try {
     const { nombre, email, password } = req.body
@@ -13,10 +15,10 @@ const postRegister = async (req, res, next) => {
 
     // TODO: Crear el usuario en la base de datos usando User.create()
     // Pista: pasar { nombre, email, password }
-    const user = null // <-- reemplazar esta línea
+    const user = await UserModel.createUser(nombre, email, password) // <-- reemplazar esta línea
 
     // TODO: Generar un token para el usuario recién creado usando generarToken()
-    const token = null // <-- reemplazar esta línea
+    const token = generarToken(user) // <-- reemplazar esta línea
 
     res.status(201).json({
       message: 'Usuario registrado exitosamente',
@@ -29,19 +31,20 @@ const postRegister = async (req, res, next) => {
   }
 }
 
+// FINALIZADO
 const postLogin = async (req, res, next) => {
   try {
     const { email, password } = req.body
 
     // TODO: Buscar el usuario por email usando User.findOne()
-    const user = null // <-- reemplazar esta línea
+    const user = await UserModel.findByEmail(email) // <-- reemplazar esta línea
 
     if (!user) {
       return res.status(401).json({ error: 'Credenciales inválidas' })
     }
 
     // TODO: Validar la contraseña usando el método user.validarPassword()
-    const passwordValida = false // <-- reemplazar esta línea
+    const passwordValida = UserModel.validatePassword(password) // <-- reemplazar esta línea
 
     if (!passwordValida) {
       return res.status(401).json({ error: 'Credenciales inválidas' })
@@ -60,11 +63,12 @@ const postLogin = async (req, res, next) => {
   }
 }
 
+// FINALIZADO
 const getPerfil = async (req, res, next) => {
   try {
     // TODO: Obtener el usuario desde la base de datos usando el id de req.user
     // Pista: req.user fue seteado por el middleware verificarToken
-    const user = null // <-- reemplazar esta línea
+    const user = await UserModel.findById(req.user.id) // <-- reemplazar esta línea
 
     if (!user) {
       return res.status(404).json({ error: 'Usuario no encontrado' })

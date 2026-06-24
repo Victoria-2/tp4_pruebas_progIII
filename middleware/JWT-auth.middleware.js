@@ -1,10 +1,13 @@
 const jwt = require('jsonwebtoken')
 
-const JWT_SECRET = process.env.JWT_SECRET || 'secret_por_defecto'
+const JWT_SECRET = process.env.JWT_SECRET
 
 function generarToken(user) {
   // TODO: Generar un token JWT con el id y email del usuario.
   // Pista: usar jwt.sign() con un payload { id, email } y una expiración de '24h'.
+  return jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
+    expiresIn: '24h'
+  })
 }
 
 function verificarToken(req, res, next) {

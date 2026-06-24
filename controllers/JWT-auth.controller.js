@@ -1,4 +1,4 @@
-const { User } = require('../models')
+// const { User } = require('../models')
 const { generarToken } = require('../middleware/JWT-auth.middleware')
 const { UserModel } = require('../models/JWT-user.model.ts')
 
@@ -44,7 +44,7 @@ const postLogin = async (req, res, next) => {
     }
 
     // TODO: Validar la contraseña usando el método user.validarPassword()
-    const passwordValida = UserModel.validatePassword(password) // <-- reemplazar esta línea
+    const passwordValida = await UserModel.validatePassword(password) // <-- reemplazar esta línea
 
     if (!passwordValida) {
       return res.status(401).json({ error: 'Credenciales inválidas' })
@@ -83,7 +83,7 @@ const getPerfil = async (req, res, next) => {
 
 const getAllUsers = async (req, res, next) => {
   try {
-    users = await UserModel.findAllUsers()
+    const users = await UserModel.findAllUsers()
     return res.status(200).json(users)
   } catch (error) {
     console.log(error)

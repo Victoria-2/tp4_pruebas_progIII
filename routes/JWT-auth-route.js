@@ -5,7 +5,7 @@ const {
   postLogin,
   getPerfil,
   getAllUsers
-} = require('../controllers/authController')
+} = require('../controllers/JWT-auth.controller')
 const { verificarToken } = require('../middleware/JWT-auth.middleware')
 
 // POST /api/auth/register - Registro de usuario (pública)

@@ -9,7 +9,8 @@ const postRegister = async (req, res, next) => {
     const { nombre, email, password } = req.body
 
     // Verificar que no exista un usuario con ese email
-    const existente = await UserModel.findOne({ where: { email } })
+    // const existente = await UserModel.findOne({ where: { email } })
+    const existente = await UserModel.findByEmail(email)
     if (existente) {
       return res.status(400).json({ error: 'El email ya está registrado' })
     }

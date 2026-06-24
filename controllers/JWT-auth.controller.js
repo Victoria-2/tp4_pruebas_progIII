@@ -81,4 +81,14 @@ const getPerfil = async (req, res, next) => {
   }
 }
 
-module.exports = { postRegister, postLogin, getPerfil }
+const getAllUsers = async (req, res, next) => {
+  try {
+    users = await UserModel.findAllUsers()
+    return res.status(200).json(users)
+  } catch (error) {
+    console.log(error)
+    next(error)
+  }
+}
+
+module.exports = { postRegister, postLogin, getPerfil, getAllUsers }

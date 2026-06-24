@@ -3,7 +3,8 @@ const router = express.Router()
 const {
   postRegister,
   postLogin,
-  getPerfil
+  getPerfil,
+  getAllUsers
 } = require('../controllers/authController')
 const { verificarToken } = require('../middleware/JWT-auth.middleware')
 
@@ -15,5 +16,7 @@ router.post('/login', postLogin)
 
 // GET /api/auth/perfil - Obtener perfil (protegida)
 router.get('/perfil', verificarToken, getPerfil)
+
+router.get('/users', getAllUsers)
 
 module.exports = router

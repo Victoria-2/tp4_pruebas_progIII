@@ -36,6 +36,10 @@ export class UserModel
   async validatePassword(passwordInput: string): Promise<boolean> {
     return await bcrypt.compare(passwordInput, this.password)
   }
+
+  static async findAllUsers(): Promise<UserModel[]> {
+    return await UserModel.findAll()
+  }
 }
 
 UserModel.init(

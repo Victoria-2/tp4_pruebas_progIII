@@ -26,6 +26,7 @@ class Server {
     this.app.use('/materias', require('../routes/extra/materia.routes')) */
     this.app.use('/notas', require('../routes/extras/nota.routes'))
     this.app.use('/api', require('../routes/JWT-auth-route'))
+    this.app.use('/api2', require('../routes/auth'))
     /* this.app.use('/profesores', require('../routes/extra/profesor.routes'))
      */
   }

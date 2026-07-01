@@ -10,7 +10,7 @@ const {
 
 rutas.get('/', getAllNotas)
 rutas.get('/join', getNotaMateria)
-rutas.get('/:idMateria', getTopNotes)
+rutas.get('/top/:idMateria', getTopNotes)
 rutas.get('/:id', getNotaById)
 rutas.post('/', postNota)
 
